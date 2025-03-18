@@ -2,9 +2,9 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [main, master]
+    branches: [ main, master ]
   pull_request:
-    branches: [main, master]
+    branches: [ main, master ]
 
 jobs:
   test:
@@ -19,20 +19,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: "npm"
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci # Instala todas as dependências do package.json
+        run: npm ci  # Instala todas as dependências, incluindo Playwright
 
       - name: Run Playwright tests
-        run: npm run test # Executa os testes em modo headless
+        run: npm run test  # Executa os testes em modo headless
 
       - name: Generate Playwright Summary
         if: always()
         run: |
           echo "## 📊 Playwright Test Summary" >> $GITHUB_STEP_SUMMARY
-          npx playwright show-report --output=summary.md || echo "⚠️ Failed to generate summary"
-          cat summary.md >> $GITHUB_STEP_SUMMARY
+          npx playwright test --reporter=json > report.json || echo "⚠️ Test execution failed"
+          PASSED=$(jq '.suites[].specs[].tests[].results[].status' report.json | grep '"passed"' | wc -l)
+          FAILED=$(jq '.suites[].specs[].tests[].results[].status' report.json | grep '"failed"' | wc -l)
+          echo "✅ Passed: $PASSED" >> $GITHUB_STEP_SUMMARY
+          echo "❌ Failed: $FAILED" >> $GITHUB_STEP_SUMMARY
 
       - name: Upload Playwright Report
         if: always()
