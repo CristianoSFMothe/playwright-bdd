@@ -1,4 +1,4 @@
-// Generated from: ecommerceLogin.feature
+// Generated from: tests\ecommerceLogin.feature
 import { test } from "playwright-bdd";
 
 test.describe('Verify login', () => {
@@ -18,7 +18,7 @@ test.describe('Verify login', () => {
 
 test.use({
   $test: ({}, use) => use(test),
-  $uri: ({}, use) => use('ecommerceLogin.feature'),
+  $uri: ({}, use) => use('tests\\ecommerceLogin.feature'),
   $bddFileData: ({}, use) => use(bddFileData),
 });
 
