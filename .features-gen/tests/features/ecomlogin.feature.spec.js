@@ -69,8 +69,6 @@ test.use({
   $test: ({}, use) => use(test),
   $uri: ({}, use) => use("tests\\features\\ecomlogin.feature"),
   $bddFileMeta: ({}, use) => use(bddFileMeta),
-  $scenarioHookFixtures: ({ page }, use) => use({ page }),
-  $workerHookFixtures: [({ browser }, use) => use({ browser }), { scope: "worker" }],
 });
 
 const bddFileMeta = {

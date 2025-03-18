@@ -10,7 +10,7 @@ Feature: Verify login
 	 And I click on My account
 	 And I enter E-Mail Address "pranav@testroverautomation.com"
 	 And I enter password "Test1234"
-     When I click on submit button
+  When I click on submit button
 	 Then I should verify url contains "route=account/account"
 
 	Scenario Outline: Verify user is not able login with following credentails 
@@ -18,9 +18,9 @@ Feature: Verify login
 	 And I click on My account
 	 And I enter E-Mail Address "<emailaddress>"
 	 And I enter password "<password>"
-     When I click on submit button
+   When I click on submit button
 	 Then I should verify user is not able to login and url contains "route=account/login"
-	Examples:
+	 Examples:
 		| emailaddress		| password 	 	| 
 		| xzy@gmail.com 	  |	 TesMeTest     |
 		| srk@testroverautomation.com | Jawan123 |

@@ -6,6 +6,8 @@
   "scripts": {
     "test": "npm run bddgen && npm run playwright-test",
     "bddgen": "npx bddgen",
+    "test:ui": "npx playwright test --ui",
+    "test:debug": "npx playwright test --debug",
     "clean": "rmdir /S /Q .features-gen",
     "playwright-test": "npx playwright test --reporter=html,list --workers 1 --headed",
     "qa-env": "powershell -Command \"$env:ENV='qa'; npx bddgen; npx playwright test",

@@ -3,16 +3,16 @@ import { defineConfig, devices } from '@playwright/test';
 import { defineBddConfig } from 'playwright-bdd';
 import dotenv from 'dotenv';
 
-// const testDir = defineBddConfig({
-//   importTestFrom: 'tests/fixtures/fixture.js',
-//   paths: ['tests/features/***.feature'],
-//   require: ['tests/steps/***steps.js']
-// });
-
 const testDir = defineBddConfig({
-  features: 'tests/features/***.feature',
-  steps: ['tests/steps/***steps.js', 'tests/fixtures/fixture.js', "tests/hooks/hooks.js" ]
+  importTestFrom: 'tests/fixtures/fixture.js',
+  paths: ['tests/features/***.feature'],
+  require: ['tests/steps/***steps.js']
 });
+
+// const testDir = defineBddConfig({
+//   features: 'tests/features/***.feature',
+//   steps: ['tests/steps/***steps.js', 'tests/fixtures/fixture.js', "tests/hooks/hooks.js" ]
+// });
 
 dotenv.config({
   path: `./env/.env.${process.env.ENV}`
@@ -44,8 +44,8 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     // Setup projects for specific files
-  //  { name: 'adminsetup', testDir: './', testMatch: [/auth\/.*adminauthsetup\.js$/] },
- //   { name: 'testsetup', testDir: './', testMatch: [/auth\/.*testauthsetup\.js$/] },
+    //  { name: 'adminsetup', testDir: './', testMatch: [/auth\/.*adminauthsetup\.js$/] },
+    //   { name: 'testsetup', testDir: './', testMatch: [/auth\/.*testauthsetup\.js$/] },
     { name: 'usersetup', testDir: './', testMatch: [/auth\/.*userauthsetup\.js$/] },
 
     // Main testing projects
@@ -62,13 +62,14 @@ export default defineConfig({
     //   },
     //    dependencies: ['usersetup'],
     // },
-      {
-        name: 'LoginTest',
-        grep: /@login/,
-        use: { ...devices['Desktop Chrome'],
+    {
+      name: 'LoginTest',
+      grep: /@login/,
+      use: {
+        ...devices['Desktop Chrome'],
         // storageState: 'playwright/.auth/user.json',
       },
-      },
+    },
     // {
     //   name: 'test',
     //   use: { ...devices['Desktop Chrome'], storageState: 'playwright/.auth/test.json' },
