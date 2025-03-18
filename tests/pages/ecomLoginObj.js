@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export class EcommerceLoginPage {
+export class EcomLoginPage {
   constructor(page) {
     this.page = page;
     this.my_account_Btn = page.getByRole('button', { name: 'My account' });
@@ -33,7 +33,7 @@ export class EcommerceLoginPage {
     await expect(this.page).toHaveURL(new RegExp(logged_url));
   }
 
-  async verifyUserIsNotAbleToLogin(login_url) {
+  async verifyUserIsNotAbleToLogin(login_url){
     await expect(this.page).toHaveURL(new RegExp(login_url));
   }
-}
+};

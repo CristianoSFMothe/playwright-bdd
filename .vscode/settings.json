@@ -1,5 +1,4 @@
 {
-  "cSpell.words": [
-    "ecommerce"
-  ]
+    "cucumberautocomplete.steps": ["tests/steps/*.js"]
+    
 }
