@@ -26,3 +26,9 @@ When('I click on submit button', async ({ page }) => {
 Then('I should verify url contains {string}', async ({ page }, logged_url) => {
   await expect(page).toHaveURL(new RegExp(logged_url))
 });
+
+// =============================================================================
+
+Then('I should verify user is not able to login and url contains {string}', async ({ page }, logged_url) => {
+  await expect(page).toHaveURL(new RegExp(logged_url))
+});
