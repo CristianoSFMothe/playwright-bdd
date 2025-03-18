@@ -89,5 +89,7 @@ npx bddgen
 Para executar os testes com relatório em HTML:
 
 ```bash
-npx bddgen; npx playwright test --reporter=html,list
+"test": "npx playwright test",
+"test:ui": "npx playwright test --ui",
+"test:debug": "npx playwright test --debug"
 ```
