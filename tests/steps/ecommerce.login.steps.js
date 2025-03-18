@@ -7,8 +7,8 @@ Given('I navigate to {string}', async ({ page }, url) => {
   await page.goto(url)
 });
 
-Given('I click on {string}', async ({ page }, My_account) => {
-  await page.getByRole('button', { name: My_account }).click()
+Given('I click on My account', async ({ page }) => {
+  await page.getByRole('button', { name: 'My account' }).click()
 });
 
 Given('I enter E-Mail Address {string}', async ({ page }, emailAddress) => {
