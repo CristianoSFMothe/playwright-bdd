@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run bddgen && npm run playwright-test",
+    "test": "npx playwright test",
+    "test:bdd": "npm run bddgen && npm run playwright-test",
     "bddgen": "npx bddgen",
     "test:ui": "npx playwright test --ui",
     "test:debug": "npx playwright test --debug",

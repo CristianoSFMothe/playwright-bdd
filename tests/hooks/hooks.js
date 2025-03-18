@@ -1,21 +1,20 @@
 import { chromium, firefox } from '@playwright/test';
 import { createBdd } from 'playwright-bdd';
 
+const { Before, After, BeforeAll, AfterAll, } = createBdd();
 
-const { Before, After, BeforeAll, AfterAll,  } = createBdd();
-
-Before(async({page})=>{
-   await page.goto('https://ecommerce-playground.lambdatest.io/')
+Before(async ({ page }) => {
+    await page.goto('https://ecommerce-playground.lambdatest.io/')
 });
 
-After(async()=>{
+After(async () => {
     console.log("This is a After.")
 });
 
-BeforeAll(async({browser})=>{
+BeforeAll(async ({ browser }) => {
     const page = firefox.launch();
 });
 
-AfterAll(async()=>{
+AfterAll(async () => {
     console.log("This is a AfterAll.")
 });
