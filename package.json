@@ -5,18 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:bdd": "npm run bddgen && npm run playwright-test",
-    "bddgen": "npx bddgen",
     "test:ui": "npx playwright test --ui",
-    "test:debug": "npx playwright test --debug",
-    "clean": "rmdir /S /Q .features-gen",
-    "playwright-test": "npx playwright test --reporter=html,list --workers 1 --headed",
-    "qa-env": "powershell -Command \"$env:ENV='qa'; npx bddgen; npx playwright test",
-    "dev-env": "powershell -Command \"$env:ENV='dev'; npx bddgen; npx playwright test",
-    "prod-env": "powershell -Command \"$env:ENV='prod'; npx bddgen; npx playwright test",
-    "qa-test": "npx bddgen && cross-env ENV=qa npx playwright test",
-    "dev-test": "npx bddgen && cross-env ENV=dev npx playwright test --headed",
-    "prod-test": "npx bddgen && cross-env ENV=prod npx playwright test --headed"
+    "test:debug": "npx playwright test --debug"
   },
   "keywords": [],
   "author": "",
